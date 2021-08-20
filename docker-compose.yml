@@ -1,0 +1,35 @@
+version: '3'
+
+
+# image of mongod and port 27017
+services:
+  db:
+    image: mongo
+    restart: always
+    ports: [27017:27017]
+
+    #volumes:
+    #  - 'db:/data/db'
+    volumes:
+
+      - ./mongod.conf:/etc/mongod.conf
+
+# web app image and reverse proxy
+  web:
+    build: ./app
+    restart: always
+    ports: [3000:3000]
+
+# environment variable
+    environment:
+      - DB_HOST=mongodb://db:27017/posts
+    depends_on:
+      - db
+
+
+volumes:
+  db: 
+
+
+
+#command:
