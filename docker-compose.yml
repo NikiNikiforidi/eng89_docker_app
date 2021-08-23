@@ -30,6 +30,33 @@ services:
 volumes:
   db: 
 
+# ----------------------------------
+
+# trying oneone elses code to see is posts will ever work UPDATE: nop, doesnt work
+# version: '3'
+
+# services:
+#   # start the db image and map to port 27017
+#   db:
+#     image: mongo
+#     restart: always
+#     ports: [27017:27017]
+#     volumes:
+#     - ./mongod.conf:/etc/mongod.conf
+
+#   web:
+#     # start up the web app image and map to localhost
+#     build: ./app
+#     restart: always
+#     ports: [80:3000]
+#     # set variable for a db port
+#     environment:
+#       - DB_HOST=mongodb://db:27017/posts
+#     depends_on:
+#       - db
+#     volumes:
+#     - ./app:/src/app
+#     # could also use links
+#     # can run the seeds here if CMD doesn't work
 
 
-#command:
